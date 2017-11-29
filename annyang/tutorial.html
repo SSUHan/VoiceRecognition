@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>An</title>
+</head>
+<body>
+<p id="greeting">First2</p>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+<script>
+    if (annyang){
+        console.log('annyang');
+        var commands = {
+            'melody hello': function() {
+                console.log('Melody Hello Command');
+                $('#greeting').text('Hi!');
+            },
+            '안녕' : function () {
+                console.log('안녕 명령어');
+                $('#greeting').text('나도 안녕!');
+            },
+            '빠이': function () {
+                console.log('빠이 명령어');
+                $('#greeting').text("어딜도망가!")
+            }
+        };
+
+        annyang.debug();
+
+        // Add our commands to annyang
+        annyang.addCommands(commands);
+
+        // Language
+        annyang.setLanguage('ko');
+
+        // Start listening. You can call this here, or attach this call to an event, button, etc.
+        annyang.start();
+    }
+    else{
+        console.log('Else');
+    }
+</script>
+</body>
+</html>
